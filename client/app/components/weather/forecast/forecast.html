@@ -7,7 +7,7 @@
       <span>
         <h3 data-ng-bind='::row.dtDisplay'></h3>
       </span>
-      <strong> {{::row.temp.max | number:0}} / {{::row.temp.min | number:0}}
+      <strong> {{::row.temp.max * 9 / 5 - 459.67 | number:0}} / {{::row.temp.min  * 9 / 5 - 459.67 | number:0}}
       </strong>
       <div data-ng-bind='::row.weather[0].description'/>
     </td>
