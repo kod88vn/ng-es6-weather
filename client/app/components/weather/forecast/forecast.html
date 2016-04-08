@@ -3,7 +3,13 @@
     <td>
       <img data-ng-src='http://openweathermap.org/img/w/{{row.weather[0].icon}}.png'/>
     </td>
-    <td data-ng-bind='::row.weather[0].description'></td>
-    <td data-ng-bind='::row.dtDisplay'></td>
+    <td class='text-muted'>
+      <span>
+        <h3 data-ng-bind='::row.dtDisplay'></h3>
+      </span>
+      <strong> {{::row.temp.max | number:0}} / {{::row.temp.min | number:0}}
+      </strong>
+      <div data-ng-bind='::row.weather[0].description'/>
+    </td>
   </tr>
 </table>
