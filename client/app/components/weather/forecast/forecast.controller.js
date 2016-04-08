@@ -7,6 +7,9 @@ class ForecastController {
     Forecasts.refresh = (zipCode) => {
       OpenWeather.getForeCast(zipCode).then(function (forecast) {
         vm.forecast = forecast;
+        vm.forecast.list.forEach((fc) => {
+          fc.dtDisplay = new Date(fc.dt * 1000).toDateString();
+        });
       });
     }
 

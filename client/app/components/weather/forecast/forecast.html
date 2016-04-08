@@ -3,6 +3,7 @@
     <td>
       <img data-ng-src='http://openweathermap.org/img/w/{{row.weather[0].icon}}.png'/>
     </td>
-    <td data-ng-bind='row.weather[0].description'></td>
+    <td data-ng-bind='::row.weather[0].description'></td>
+    <td data-ng-bind='::row.dtDisplay'></td>
   </tr>
 </table>
