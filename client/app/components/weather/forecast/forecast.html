@@ -1,11 +1,11 @@
 <table class='table'>
   <tr data-ng-repeat='row in fc.forecast.list'>
-    <td>
-      <img data-ng-src='http://openweathermap.org/img/w/{{row.weather[0].icon}}.png'/>
+    <td class='img-container'>
+      <img class='img-centered' data-ng-src='http://openweathermap.org/img/w/{{row.weather[0].icon}}.png'/>
     </td>
     <td class='text-muted'>
       <span>
-        <h3 data-ng-bind='::row.dtDisplay'></h3>
+        <h4 data-ng-bind='::row.dtDisplay'/>
       </span>
       <strong> {{::row.temp.max * 9 / 5 - 459.67 | number:0}} / {{::row.temp.min  * 9 / 5 - 459.67 | number:0}}
       </strong>
