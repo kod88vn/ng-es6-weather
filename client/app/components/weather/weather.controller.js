@@ -1,21 +1,22 @@
 class WeatherController {
-  constructor($scope) {
+  constructor(Forecasts) {
     'ngInject';
+    this.Forecasts = Forecasts;
+  }
 
-    var vm = this;
-    vm.name = 'weather';    
-    vm.zipCode = '';
+  get zipCode() {
+    return this._zipCode;
+  }
 
-    $scope.$watch(function watchZipCode(){
-      return vm.zipCode;
-    }, function onWatchZipCode(zipCode){
-      if(zipCode.length !== 5) {
-        vm.forecast = [];
+  set zipCode(val) {
+    this._zipCode = val;
+    if (val.length !== 5) {
+      this.Forecasts.clear();
+      
+      return;
+    }
 
-        return;
-      }
-      $scope.$broadcast('refreshForecast', zipCode);      
-    });
+    this.Forecasts.refresh();
   }
 }
 

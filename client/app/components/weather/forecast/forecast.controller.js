@@ -1,14 +1,18 @@
 class ForecastController {
-  constructor($scope, OpenWeather) {
+  constructor(OpenWeather, Forecasts) {
     'ngInject';
-    var vm = this;
+    let vm = this;
     vm.name = 'forecast';
 
-    $scope.$on('refreshForecast', function(zipCode) {
+    Forecasts.refresh = (zipCode) => {
       OpenWeather.getForeCast(zipCode).then(function (forecast) {
         vm.forecast = forecast;
       });
-    });
+    }
+
+    Forecasts.clear = () => {
+      vm.forecast = null;
+    }
   }
 }
 
