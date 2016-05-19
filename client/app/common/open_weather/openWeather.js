@@ -3,6 +3,6 @@ import OpenWeatherFactory from './openWeather.factory';
 
 let openWeatherModule = angular.module('openWeather', [])
 
-.factory('OpenWeather', OpenWeatherFactory);
+.factory('OpenWeatherDa', OpenWeatherFactory);
 
 export default openWeatherModule;

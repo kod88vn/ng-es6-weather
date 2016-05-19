@@ -3,12 +3,12 @@ let OpenWeatherFactory = function ($http, $q) {
 
   const apiKey = '651d7399f1db9446bc4a25062ab5a2a5';
 
-  let getForeCast = () => {
+  let getForeCast = zipCode => {
     let url = 'http://api.openweathermap.org/data/2.5/forecast/daily';
     let deferred = $q.defer();
 
     let data = {
-      zip: this.zipCode + ',us',
+      zip: zipCode + ',us',
       APPID: apiKey,
       cnt: 5
     };
@@ -17,10 +17,6 @@ let OpenWeatherFactory = function ($http, $q) {
 
     return deferred.promise;
   };
-
-  let setZipCode = (zipCode) => {
-    this.zipCode = zipCode;
-  }
 
   let httpGet = (deferred, url, data) => {
     $http({
@@ -37,8 +33,7 @@ let OpenWeatherFactory = function ($http, $q) {
   }
 
   return { 
-    getForeCast, 
-    setZipCode 
+    getForeCast
   };
 };
 

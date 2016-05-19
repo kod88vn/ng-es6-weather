@@ -1,12 +1,11 @@
 class WeatherController {
-  constructor(OpenWeather) {
+  constructor() {
     'ngInject';
-    var vm = this;
-    vm.OpenWeather = OpenWeather;
-    vm.forecastConfig = {
+    this.name = 'weather';
+    this.forecastConfig = {
       actions: {
-        refresh: function() {}, // implement in forecast component
-        clear: function() {} // implement in forecast component
+        refresh: null, // implement in forecast component
+        clear: null // implement in forecast component
       }
     };
   }
@@ -15,16 +14,23 @@ class WeatherController {
     return this._zipCode;
   }
 
-  set zipCode(val) {
-    this._zipCode = val;
-    if (val.length !== 5) {
-      this.forecastConfig.actions.clear();
+  set zipCode(zipCode) {
+    this._zipCode = zipCode;
+    if (zipCode.length !== 5) {
+      this.clearForecast();
 
       return;
     }
 
-    this.OpenWeather.setZipCode(val);
-    this.forecastConfig.actions.refresh();
+    this.refreshForecast(zipCode);
+  }
+
+  clearForecast() {
+    this.forecastConfig.actions.clear.call(this.forecastConfig.context);
+  }
+
+  refreshForecast(zipCode) {
+    this.forecastConfig.actions.refresh.call(this.forecastConfig.context, zipCode);
   }
 }
 
