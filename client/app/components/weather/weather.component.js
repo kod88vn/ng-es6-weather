@@ -1,4 +1,4 @@
-import template from './weather.html';
+import template from './weather.pug';
 import controller from './weather.controller';
 import './weather.styl';
 

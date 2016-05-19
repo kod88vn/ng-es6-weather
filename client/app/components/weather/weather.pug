@@ -1,0 +1,6 @@
+
+div
+	h1 Welcome to simple {{ vm.name }} app
+	.col-md-12
+		input.form-control(data-ng-model='vm.zipCode', type='text', placeholder='Zip Code')
+		div(data-ui-view='forecast')
