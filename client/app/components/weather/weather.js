@@ -18,7 +18,7 @@ let weatherModule = angular.module('weather', [
           template: '<weather/>'
         },
         'forecast@weather': {
-          template: '<forecast/>'
+          template: '<forecast data-config="vm.forecastConfig"/>'
         }
       }
     });

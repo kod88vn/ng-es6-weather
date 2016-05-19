@@ -1,8 +1,14 @@
 class WeatherController {
-  constructor(Forecasts, OpenWeather) {
+  constructor(OpenWeather) {
     'ngInject';
-    this.Forecasts = Forecasts;
-    this.OpenWeather = OpenWeather;
+    var vm = this;
+    vm.OpenWeather = OpenWeather;
+    vm.forecastConfig = {
+      actions: {
+        refresh: function() {}, // implement in forecast component
+        clear: function() {} // implement in forecast component
+      }
+    };
   }
 
   get zipCode() {
@@ -12,13 +18,13 @@ class WeatherController {
   set zipCode(val) {
     this._zipCode = val;
     if (val.length !== 5) {
-      this.Forecasts.clear();
+      this.forecastConfig.actions.clear();
 
       return;
     }
 
     this.OpenWeather.setZipCode(val);
-    this.Forecasts.refresh();
+    this.forecastConfig.actions.refresh();
   }
 }
 

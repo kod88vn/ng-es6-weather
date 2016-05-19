@@ -1,11 +1,20 @@
 class ForecastController {
-  constructor(OpenWeather, Forecasts) {
+  constructor(OpenWeather) {
     'ngInject';
-    let vm = this;
+    var vm = this;
     vm.name = 'forecast';
 
-    Forecasts.refresh = () => {
+    let clear = () => {
+      vm.forecast = null;
+    }
+
+    let refresh = () => {
       OpenWeather.getForeCast().then(function (forecast) {
+        if(forecast.cod == 404) {
+          console.error('zipcode not found');
+          return;
+        }
+        
         vm.forecast = forecast;
         vm.forecast.list.forEach((fc) => {
           fc.dtDisplay = new Date(fc.dt * 1000).toDateString();
@@ -13,9 +22,8 @@ class ForecastController {
       });
     }
 
-    Forecasts.clear = () => {
-      vm.forecast = null;
-    }
+    vm.config.actions.refresh = refresh;
+    vm.config.actions.clear = clear;
   }
 }
 

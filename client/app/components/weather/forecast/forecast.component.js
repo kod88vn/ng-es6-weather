@@ -4,7 +4,9 @@ import './forecast.styl';
 
 let forecastComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+  	config: '='
+  },
   template,
   controller,
   controllerAs: 'fc'
