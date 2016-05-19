@@ -2,12 +2,7 @@ class WeatherController {
   constructor() {
     'ngInject';
     this.name = 'weather';
-    this.forecastConfig = {
-      actions: {
-        refresh: null, // implement in forecast component
-        clear: null // implement in forecast component
-      }
-    };
+    this.forecastConfig = {};
   }
 
   get zipCode() {
@@ -26,11 +21,11 @@ class WeatherController {
   }
 
   clearForecast() {
-    this.forecastConfig.actions.clear.call(this.forecastConfig.context);
+    this.forecastConfig.context.clear();
   }
 
   refreshForecast(zipCode) {
-    this.forecastConfig.actions.refresh.call(this.forecastConfig.context, zipCode);
+    this.forecastConfig.context.refresh();
   }
 }
 

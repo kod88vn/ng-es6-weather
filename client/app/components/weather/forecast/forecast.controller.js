@@ -2,8 +2,6 @@ class ForecastController {
   constructor(OpenWeatherDa) {
     'ngInject';
     this.OpenWeatherDa = OpenWeatherDa;
-    this.config.actions.refresh = this.refresh;
-    this.config.actions.clear = this.clear;
     this.config.context = this;
   }
 
