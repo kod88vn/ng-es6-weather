@@ -2,7 +2,7 @@ class ForecastController {
   constructor(OpenWeatherDa) {
     'ngInject';
     this.OpenWeatherDa = OpenWeatherDa;
-    this.config.context = this;
+    this.config.sub = this;
   }
 
   clear() {
@@ -15,7 +15,7 @@ class ForecastController {
         console.error('zipcode not found');
         return;
       }
-      
+
       this.forecast = forecast;
       this.forecast.list.forEach(fc => {
         fc.dtDisplay = new Date(fc.dt * 1000).toDateString();

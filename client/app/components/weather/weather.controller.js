@@ -21,11 +21,11 @@ class WeatherController {
   }
 
   clearForecast() {
-    this.forecastConfig.context.clear();
+    this.forecastConfig.sub.clear();
   }
 
   refreshForecast(zipCode) {
-    this.forecastConfig.context.refresh();
+    this.forecastConfig.sub.refresh();
   }
 }
 
