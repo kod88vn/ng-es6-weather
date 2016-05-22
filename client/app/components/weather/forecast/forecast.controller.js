@@ -2,7 +2,7 @@ class ForecastController {
   constructor(OpenWeatherDa) {
     'ngInject';
     this.OpenWeatherDa = OpenWeatherDa;
-    this.config.sub = this;
+    this.config.sub = this;  // So pub (parent) can execute the actions within this context
   }
 
   clear() {
